@@ -12,29 +12,25 @@ import SwiftUI
    
 
 struct ContentView: View {
-    
+    @State private var title: String = "Default Title"
+    @State private var titleInput: String = ""
     
     var body: some View {
-        
-        VStack(spacing: 10) {
-            Menu("Select")
-            {
-                    Button("Option 1", action: performOption1)
-                    Button("Option 2", action: performOption2)
-                    Button("Option 3", action: performOption3)
+        VStack(spacing: 15) {
+        Text(title)
+                .lineLimit(1)
+                .padding()
+                .background(Color.yellow)
+            TextField("Insert Title", text: $titleInput)
+                .textFieldStyle(.roundedBorder)
+                .textInputAutocapitalization(.words)
+            Button("Save") {
+                title = titleInput
+                titleInput = ""
             }
-            
+            Spacer()
+                .padding()
         }
-        .padding()
-    }
-    func performOption1() {
-        print("This is Option1")
-    }
-    func performOption2() {
-        print("This is Option1")
-    }
-    func performOption3() {
-        print("This is Option1")
     }
  }
 
@@ -46,3 +42,5 @@ struct ContentView_Previews: PreviewProvider {
             .preferredColorScheme(.dark)
     }
 }
+
+
